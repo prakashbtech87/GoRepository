@@ -2,32 +2,37 @@ package main
 
 import "fmt"
 
+// Define the bot interface
 type bot interface {
 	translate() string
 }
+
+// Define the englishTranslator struct
 type englishTranslator struct{}
+
+// Define the frenchTranslator struct
 type frenchTranslator struct{}
 
 func main() {
 	eng := englishTranslator{}
 	fre := frenchTranslator{}
+
+	// Call printMessage with different translators
 	printMessage(eng)
 	printMessage(fre)
 }
 
-//	func printMessage(eng englishTranslator){
-//	 fmt.Println(eng.translate())
-//	}
-//
-//	func printMessage(fre frenchTranslator){
-//	 fmt.Println(fre.translate())
-//	}
+// printMessage function takes a bot interface and prints the translated message
 func printMessage(b bot) {
 	fmt.Println(b.translate())
 }
+
+// translate method for englishTranslator
 func (eng englishTranslator) translate() string {
-	return "Hello in english"
+	return "Hello in English"
 }
+
+// translate method for frenchTranslator
 func (french frenchTranslator) translate() string {
-	return "Hello in french"
+	return "Bonjour en Français"
 }

@@ -5,13 +5,12 @@ import "fmt"
 func main() {
 	fmt.Println("Start of the program")
 
-	// the fuction inside defer will be executed when surrounding function exits
+	// The function calls with defer will be executed when the surrounding function (main) exits.
 
-	//defer fmt.Println("This will be printed at the end of the program")
+	defer fmt.Println("This will be executed first")  // This will be the last deferred function executed
+	defer fmt.Println("This will be executed second") // This will be executed second to last
 
-	defer fmt.Println("This will be executed second")
+	fmt.Println("middle of the program") // This is executed next
 
-	defer fmt.Println("This will be executed first")
-
-	fmt.Println("middle of the program")
+	// The program ends here, and deferred functions will execute in reverse order.
 }
